@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "dwmreactapp-20181004143810-authRole",
+            "UnauthRoleArn": "arn:aws:iam::875324011155:role/dwmreactapp-20181004143810-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::875324011155:role/dwmreactapp-20181004143810-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "dwmreactapp-20181004143810-deployment",
+            "UnauthRoleName": "dwmreactapp-20181004143810-unauthRole",
+            "StackName": "dwmreactapp-20181004143810",
+            "StackId": "arn:aws:cloudformation:us-east-1:875324011155:stack/dwmreactapp-20181004143810/357c0ec0-c7b9-11e8-bb66-50fae9e50c9a"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "jsx-control-statements/jsx-control-statements": true
+    },
+    "extends": [
+        "react-app",
+        "airbnb",
+        "plugin:jsx-control-statements/recommended"
+    ],
+    "parser": "babel-eslint",
+    "plugins": ["jsx-control-statements"],
+    "rules": {
+        "comma-dangle": ["error", "never"],
+        "no-unused-vars": [
+            "error",
+            {
+                "vars": "local",
+                "args": "none"
+            }
+        ],
+        "no-useless-escape": "off",
+        "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+        "import/no-named-as-default": "off",
+        "import/no-named-as-default-member": "off",
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": ["Link"],
+                "specialLink": ["to"]
+            }
+        ],
+        "jsx-a11y/href-no-hash": "off",
+        "jsx-a11y/label-has-for": "off",
+        "jsx-a11y/label-has-associated-control" : "off",
+        "jsx-control-statements/jsx-choose-not-empty": "warn",
+        "jsx-control-statements/jsx-for-require-each": "warn",
+        "jsx-control-statements/jsx-for-require-of": "warn",
+        "jsx-control-statements/jsx-if-require-condition": "warn",
+        "jsx-control-statements/jsx-otherwise-once-last": "warn",
+        "jsx-control-statements/jsx-use-if-tag": "off",
+        "jsx-control-statements/jsx-when-require-condition": "warn",
+        "jsx-control-statements/jsx-jcs-no-undef": "warn",
+        "no-nested-ternary": "off",	
+        "object-curly-newline": "off",
+        "react/jsx-filename-extension": "off",
+        "react/button-has-type" : "off",
+        "react/jsx-no-undef": ["error", { "allowGlobals": true }],
+        "react/no-string-refs": "off",
+        "react/prop-types": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "moduleDirectory": ["node_modules", "src/"]
+            }
+        }
+    }
+}

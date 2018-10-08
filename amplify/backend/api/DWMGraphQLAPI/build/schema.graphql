@@ -1,0 +1,174 @@
+type Project {
+  id: ID!
+  name: String!
+  key: String!
+  owner: String
+  description: String
+  url: String
+  repositories(filter: ModelRepositoryFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelRepositoryConnection
+}
+
+type Repository {
+  id: ID!
+  name: String!
+  project: Project
+  language: String
+  url: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelProjectConnection {
+  items: [Project]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelProjectFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  key: ModelStringFilterInput
+  owner: ModelStringFilterInput
+  description: ModelStringFilterInput
+  url: ModelStringFilterInput
+  and: [ModelProjectFilterInput]
+  or: [ModelProjectFilterInput]
+  not: ModelProjectFilterInput
+}
+
+type Query {
+  getProject(id: ID!): Project
+  listProjects(filter: ModelProjectFilterInput, limit: Int, nextToken: String): ModelProjectConnection
+  getRepository(id: ID!): Repository
+  listRepositorys(filter: ModelRepositoryFilterInput, limit: Int, nextToken: String): ModelRepositoryConnection
+}
+
+input CreateProjectInput {
+  name: String!
+  key: String!
+  owner: String
+  description: String
+  url: String
+}
+
+input UpdateProjectInput {
+  id: ID!
+  name: String
+  key: String
+  owner: String
+  description: String
+  url: String
+}
+
+input DeleteProjectInput {
+  id: ID
+}
+
+type Mutation {
+  createProject(input: CreateProjectInput!): Project
+  updateProject(input: UpdateProjectInput!): Project
+  deleteProject(input: DeleteProjectInput!): Project
+  createRepository(input: CreateRepositoryInput!): Repository
+  updateRepository(input: UpdateRepositoryInput!): Repository
+  deleteRepository(input: DeleteRepositoryInput!): Repository
+}
+
+type Subscription {
+  onCreateProject: Project @aws_subscribe(mutations: ["createProject"])
+  onUpdateProject: Project @aws_subscribe(mutations: ["updateProject"])
+  onDeleteProject: Project @aws_subscribe(mutations: ["deleteProject"])
+  onCreateRepository: Repository @aws_subscribe(mutations: ["createRepository"])
+  onUpdateRepository: Repository @aws_subscribe(mutations: ["updateRepository"])
+  onDeleteRepository: Repository @aws_subscribe(mutations: ["deleteRepository"])
+}
+
+type ModelRepositoryConnection {
+  items: [Repository]
+  nextToken: String
+}
+
+input ModelRepositoryFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  language: ModelStringFilterInput
+  url: ModelStringFilterInput
+  and: [ModelRepositoryFilterInput]
+  or: [ModelRepositoryFilterInput]
+  not: ModelRepositoryFilterInput
+}
+
+input CreateRepositoryInput {
+  name: String!
+  language: String
+  url: String
+  repositoryProjectId: ID
+}
+
+input UpdateRepositoryInput {
+  id: ID!
+  name: String
+  language: String
+  url: String
+  repositoryProjectId: ID
+}
+
+input DeleteRepositoryInput {
+  id: ID
+}

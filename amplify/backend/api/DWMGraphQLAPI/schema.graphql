@@ -1,0 +1,16 @@
+type Project @model {
+  id: ID!
+  name: String!
+  key: String!
+  owner: String
+  description: String
+  url: String
+  repositories: [Repository] @connection(name: "ProjectRepositories")
+}
+type Repository @model {
+  id: ID!
+  name: String!
+  project: Project @connection(name: "ProjectRepositories")
+  language: String
+  url: String
+}

@@ -1,0 +1,7 @@
+{
+    "AppSyncApiName": "DWMGraphQLAPI",
+    "schemaGraphql": "s3://dwmreactapp-20181004143810-deployment/amplify-appsync-files/schema.graphql.1538646943107",
+    "ResolverBucket": "dwmreactapp-20181004143810-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1538646943107"
+}
